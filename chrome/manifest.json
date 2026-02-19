@@ -3,7 +3,7 @@
   "name": "Wei Name Service (WNS) Resolver",
   "version": "26.2.18.1003",
   "description": "Detect, resolve, and replace Ethereum addresses with their WEI Name Service (WNS) primary names.",
-  "author": "Denizen. (denizen.wei)",
+  "author": "Denizen. // dnzn.wei",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
