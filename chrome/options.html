@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>Wei Name Service (WNS) Resolver Configuration</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+      max-width: 480px;
+      margin: 32px auto;
+      padding: 0 16px;
+      color: #1a1a1a;
+    }
+    h1 { font-size: 18px; margin-bottom: 24px; }
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 7px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: monospace;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #0070f3;
+      box-shadow: 0 0 0 2px rgba(0,112,243,0.15);
+    }
+    input[type="number"] {
+      padding: 7px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: monospace;
+    }
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 7px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: monospace;
+      resize: vertical;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #0070f3;
+      box-shadow: 0 0 0 2px rgba(0,112,243,0.15);
+    }
+    .hint { font-size: 12px; color: #888; margin-top: 4px; }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
+      gap: 8px;
+    }
+    #save {
+      padding: 8px 20px;
+      background: #0070f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #save:hover { background: #0060d3; }
+    #reset {
+      padding: 8px 20px;
+      background: white;
+      color: #555;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #reset:hover { background: #f5f5f5; border-color: #aaa; }
+    #status {
+      width: 100%;
+      color: #2a7a2a;
+      font-size: 13px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    #status.visible { opacity: 1; }
+    details { margin-top: 20px; }
+    summary {
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+      color: #555;
+      user-select: none;
+    }
+    summary:hover { color: #1a1a1a; }
+    pre.example {
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-family: monospace;
+      margin: 4px 0 0;
+      overflow-x: auto;
+      cursor: text;
+      user-select: all;
+    }
+    details[open] summary { margin-bottom: 12px; }
+    .header-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+      align-items: center;
+    }
+    .header-row input {
+      flex: 1;
+    }
+    .header-row .remove-header {
+      background: none;
+      border: none;
+      color: #999;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+    }
+    .header-row .remove-header:hover { color: #c00; }
+    #addHeader {
+      padding: 4px 12px;
+      background: white;
+      color: #555;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    #addHeader:hover { background: #f5f5f5; border-color: #aaa; }
+    .section { margin-top: 20px; }
+    .subsection { margin-top: 12px; }
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .check-row label { margin: 0; }
+    .inline-label { margin: 0; white-space: nowrap; }
+    .narrow { width: 80px; }
+    #clearCache {
+      padding: 8px 20px;
+      background: white;
+      color: #555;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #clearCache:hover { background: #f5f5f5; border-color: #aaa; }
+    .advanced-label { margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Wei Name Service (WNS) Resolver Configuration</h1>
+  <p class="hint">Detect, resolve, and replace Ethereum addresses with their <a href="https://wei.domains" target="_blank" rel="noopener">Wei Name Service (WNS)</a> primary names.</p>
+
+  <br>
+
+  <label for="rpcUrl">RPC URL</label>
+  <input type="text" id="rpcUrl">
+  <p class="hint">Any Ethereum JSON-RPC endpoint. Calls are batched via Multicall3.</p>
+
+  <label class="section">RPC Request Headers</label>
+  <div id="headersContainer"></div>
+  <button type="button" id="addHeader">+ Add Header</button>
+  <p class="hint">Custom HTTP headers sent with each RPC request (e.g. Authorization).</p>
+
+  <div class="subsection check-row">
+    <label for="maxBatchSize" class="inline-label">RPC Max Batch Size</label>
+    <input type="number" id="maxBatchSize" min="1" max="500" class="narrow">
+  </div>
+  <p class="hint">Maximum addresses per RPC call (1–500). Larger pages are resolved in multiple batches.</p>
+
+  <div class="subsection check-row">
+    <label for="rpcCooldownMs" class="inline-label">RPC Cooldown (ms)</label>
+    <input type="number" id="rpcCooldownMs" min="0" max="30000" class="narrow">
+  </div>
+  <p class="hint">Minimum wait between RPC calls in milliseconds (0–30000). Prevents flooding your RPC provider.</p>
+
+  <div class="section check-row">
+    <input type="checkbox" id="replaceEns">
+    <label for="replaceEns">Replace ENS Names?</label>
+  </div>
+  <p class="hint">Also replace links whose display text ends with .eth.</p>
+
+  <div class="subsection check-row">
+    <input type="checkbox" id="logging">
+    <label for="logging">Enable Console Logging?</label>
+  </div>
+  <p class="hint">Log extension activity to the browser console for debugging.</p>
+
+  <div class="section check-row">
+    <input type="checkbox" id="cacheEnabled">
+    <label for="cacheEnabled">Enable Caching?</label>
+  </div>
+  <p class="hint">Cache resolved names locally to reduce RPC calls. Disable to always fetch fresh results.</p>
+
+  <div class="subsection check-row">
+    <label for="cacheTtlMinutes" class="inline-label">Cache TTL (minutes)</label>
+    <input type="number" id="cacheTtlMinutes" min="1" max="10080" class="narrow">
+  </div>
+  <p class="hint">How long cached names remain valid (1–10080 min / 7 days).</p>
+
+  <label for="ignoreList" class="section">Ignore List</label>
+  <textarea id="ignoreList" rows="5" placeholder="z0r0z.eth&#10;vitalik.eth&#10;..."></textarea>
+  <p class="hint">One entry per line. Links whose display text matches an entry will not be replaced.</p>
+
+  <div class="btn-row">
+    <button id="save">Save</button>
+    <button id="reset">Reset Defaults</button>
+    <button id="clearCache">Clear Cache</button>
+    <span id="status">Saved!</span>
+  </div>
+
+  <details>
+    <summary>Advanced</summary>
+
+    <div class="check-row">
+      <input type="checkbox" id="useSync">
+      <label for="useSync">Sync Settings Across Devices?</label>
+    </div>
+    <p class="hint">When enabled, settings are stored in Chrome sync storage and shared across signed-in devices. When disabled, settings stay local to this device.</p>
+
+    <div class="check-row" style="margin-top: 12px;">
+      <input type="checkbox" id="allFrames">
+      <label for="allFrames">Run in All Frames?</label>
+    </div>
+    <p class="hint">Resolve names inside iframes (ads, embeds, widgets). Disable to limit the extension to top-level pages only.</p>
+
+    <p class="hint" style="margin-top: 16px;"><strong>Warning:</strong> The patterns below run on every link on every page. Avoid nested quantifiers (e.g. <code>(a+)+</code>) — poorly designed regex can freeze your browser.</p>
+
+    <label for="hrefRules" class="advanced-label">Custom Href Rules</label>
+    <textarea id="hrefRules" rows="4"></textarea>
+    <p class="hint">JSON array of rules, each with a "pattern" (regex) and "group" (capture group number, default 1) that extracts the address from a link's href. Rules are tried in order; first valid match wins. Takes priority over the default patterns.</p>
+    <p class="hint">Example:</p>
+    <pre class="example">[
+  {
+    "pattern": "[?&]a=(0x[0-9a-fA-F]{40})",
+    "group": 1
+  }
+]</pre>
+
+    <label for="ethRe" class="advanced-label">Full Address Pattern</label>
+    <input type="text" id="ethRe">
+    <p class="hint">Regex to find a full 40-hex address anywhere in a link's href.</p>
+
+    <label for="abbrRe" class="advanced-label">Abbreviated Display Text Pattern</label>
+    <input type="text" id="abbrRe">
+    <p class="hint">Regex to match a shortened address in link display text (e.g. 0x1234…5678). Requires two capture groups: prefix hex and suffix hex.</p>
+  </details>
+
+  <p class="hint" style="margin-top: 32px; text-align: center;">by <strong>Denizen.</strong> // dnzn.wei</p>
+
+  <script src="config.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

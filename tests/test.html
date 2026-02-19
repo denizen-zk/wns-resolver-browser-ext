@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WNS Resolver — Test Page</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 48px auto; padding: 0 24px; color: #111; line-height: 1.6; }
+    h1 { font-size: 1.3rem; margin-bottom: 4px; }
+    p.sub { color: #666; font-size: 0.875rem; margin: 0 0 2rem; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+    th { color: #555; font-weight: 600; background: #fafafa; }
+    td:nth-child(2) { font-family: monospace; font-size: 0.82rem; }
+    a { color: inherit; }
+    .dim { color: #999; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+
+  <h1>Wei Name Service (WNS) Resolver — Test Page</h1>
+  <p class="sub">Links should have their display text replaced with <strong>.wei</strong> names. Hover any replaced name to see the original address.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Expected</th>
+        <th>Link</th>
+        <th>Match type</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>ross.wei / z0r0z.wei</td>
+        <td><a href="https://etherscan.io/address/0x1C0Aa8cCD568d90d61659F060D1bFb1e6f855A20">0x1C0Aa8cCD568d90d61659F060D1bFb1e6f855A20</a></td>
+        <td>Primary — full address in href</td>
+      </tr>
+
+      <tr>
+        <td>dnzn.wei</td>
+        <td><a href="https://etherscan.io/address/0x357836ffcb45307fa7ff2a574f505753c961902b">0x357836ffcb45307fa7ff2a574f505753c961902b</a></td>
+        <td>Primary — full address in href</td>
+      </tr>
+
+      <tr>
+        <td>dnzn.wei</td>
+        <td><a href="https://etherscan.io/address/0x357836ffcb45307fa7ff2a574f505753c961902b">0x3578...902b</a></td>
+        <td>Primary — abbreviated text, full address in href</td>
+      </tr>
+
+      <tr>
+        <td>dnzn.wei</td>
+        <td><a href="https://etherscan.io/token/0x00a6ba94bbb5474725515de88fe04f854f2dcb12?a=0x357836ffcb45307fa7ff2a574f505753c961902b">0x3578...902b</a></td>
+        <td>Primary — subject address last in href (token ?a= pattern)</td>
+      </tr>
+
+      <tr>
+        <td>dnzn.wei</td>
+        <td><a href="https://etherscan.io/token/0x00a6ba94bbb5474725515de88fe04f854f2dcb12#balances?holder=0x357836ffcb45307fa7ff2a574f505753c961902b">0x357836fF…3c961902b</a></td>
+        <td>Secondary — abbr prefix/suffix matched against address in href</td>
+      </tr>
+
+      <tr>
+        <td>dnzn.wei</td>
+        <td><a href="https://etherscan.io/address/0x357836ffcb45307fa7ff2a574f505753c961902b?token=0x00a6ba94bbb5474725515de88fe04f854f2dcb12">0x357836ffcb45307fa7ff2a574f505753c961902b</a></td>
+        <td>Primary — /address/0xUSER?token=0xCONTRACT (regression: picks address, not token)</td>
+      </tr>
+
+      <tr>
+        <td class="dim">(no name — stays as-is)</td>
+        <td><a href="https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48">0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48</a></td>
+        <td class="dim">USDC — no WNS name</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</body>
+</html>
