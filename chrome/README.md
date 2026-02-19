@@ -2,6 +2,21 @@
 
 Chrome Manifest V3 implementation of the Wei Name Service (WNS) Resolver Extension.
 
+## Installation
+
+### Development
+
+1. Clone this repo
+2. Open `chrome://extensions`
+3. Enable **Developer mode**
+4. Click **Load unpacked** and select the `chrome/` directory
+
+*No build requirements — vanilla JS, zero dependencies.*
+
+### Production
+
+*Pending testing and feedback.*
+
 ## Architecture
 
 *Entity Relationships*
@@ -39,17 +54,6 @@ sequenceDiagram
     BG-->>CS: { address → name } (cached + fresh)
     CS->>Page: Replace link text with WNS names
 ```
-
-## Install
-
-### Development
-
-1. Clone this repo
-2. Open `chrome://extensions`
-3. Enable **Developer mode**
-4. Click **Load unpacked** and select the `chrome/` directory
-
-*No build requirements — vanilla JS, zero dependencies.*
 
 ## Configuration
 

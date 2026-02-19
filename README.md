@@ -15,9 +15,9 @@ by **Denizen.** // dnzn.wei
 
 ## Implementations
 
-| PLATFORM | STATUS | AUDIT |
-|---|---|---|
-| Chrome (MV3) | `vibe/alpha` | [v26.2.18.1003 // Self Review](audit/self/chrome-26.2.18.1003.md) |
+| PLATFORM | STATUS | AUDIT | DOCS |
+|---|---|---|---|
+| Chrome (MV3) | `vibe/alpha` | [v26.2.18.1003 // Self Review](audit/self/chrome-26.2.18.1003.md) | [chrome/README](chrome/README.md)
 
 ### Contract Dependencies
 
