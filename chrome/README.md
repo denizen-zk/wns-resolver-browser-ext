@@ -19,7 +19,7 @@ Chrome Manifest V3 implementation of the Wei Name Service (WNS) Resolver Extensi
 
 ## Architecture
 
-*Entity Relationships*
+### Entity Relationships
 
 ```mermaid
 graph TD
@@ -32,7 +32,7 @@ graph TD
     E -->|chrome.storage.sync| B
 ```
 
-*Resolution Sequence*
+### Resolution Sequence
 
 ```mermaid
 sequenceDiagram
