@@ -62,7 +62,7 @@ Set via the extension options page (right-click extension icon → Options).
 ### General
 
 | Setting | Default | Description |
-|---|---|---|
+|:---|:---|:---|
 | RPC URL | `https://eth.llamarpc.com` | Ethereum JSON-RPC endpoint. Calls are batched via Multicall3. |
 | Request Headers | *(none)* | Custom HTTP headers sent with each RPC request (e.g. `Authorization`). Add key/value pairs via the UI. |
 | Replace ENS Names | `false` | Also replace links whose display text ends with `.eth`. |
@@ -77,7 +77,7 @@ Set via the extension options page (right-click extension icon → Options).
 These settings are hidden behind the **Advanced** toggle on the options page.
 
 | Setting | Default | Description |
-|---|---|---|
+|:---|:---|:---|
 | Custom Href Rules | *(empty)* | JSON array of rules for extracting an Ethereum address from a link's `href`. Each rule has a `"pattern"` (regex string) and an optional `"group"` (capture group number, defaults to `1`). Rules are tried in order; the first valid match wins. Takes priority over the default full-address pattern. |
 | Full Address Pattern | `\b0x[0-9a-fA-F]{40}\b` | Regex applied to each link's `href` to find a full 40-hex-char Ethereum address. Used when no Custom Href Rule matches. |
 | Abbreviated Display Text Pattern | `\b0x([0-9a-fA-F]{4,})[….]{2,3}([0-9a-fA-F]{4,})\b` | Regex to match a shortened address in a link's visible text (e.g. `0x1234…5678`). Must contain two capture groups: prefix hex digits and suffix hex digits. These are matched against full addresses found in the `href`. |

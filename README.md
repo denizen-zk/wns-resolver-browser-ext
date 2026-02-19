@@ -16,13 +16,13 @@ by **Denizen.** // dnzn.wei
 ## Implementations
 
 | PLATFORM | STATUS | AUDIT | DOCS |
-|---|---|---|---|
+|:---|:---|:---|:---|
 | Chrome (MV3) | `vibe/alpha` | [v26.2.18.1003 // Self Review](audit/self/chrome-26.2.18.1003.md) | [chrome/README](chrome/README.md)
 
 ### Contract Dependencies
 
 | NAME | ADDRESS |
-|---|---|
+|:---|:---|
 | Wei Name Service (WNS) | [0x0000000000696760E15f265e828DB644A0c242EB](https://etherscan.io/address/0x0000000000696760e15f265e828db644a0c242eb) |
 | Multicall3 | [0xcA11bde05977b3631167028862bE2a173976CA11](https://etherscan.io/address/0xcA11bde05977b3631167028862bE2a173976CA11) |
 
