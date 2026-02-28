@@ -38,7 +38,16 @@ To mitigate this, open the extension options and configure:
 - **Request Headers** — add an API key / auth token if your provider requires one
 - **RPC Cooldown** — increase the delay between RPC calls
 
-See [RPC Providers](chrome/README.md#rpc-providers) in the Chrome extension docs for a list of providers.
+### RPC Providers
+
+| Provider | URL |
+|:---|:---|
+| Infura | https://www.infura.io |
+| QuickNode | https://www.quicknode.com |
+| Alchemy | https://www.alchemy.com |
+| Ankr | https://www.ankr.com |
+| dRPC | https://drpc.org |
+| LlamaRPC (default, free) | https://llamarpc.com |
 
 ## License
 

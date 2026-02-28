@@ -16,7 +16,8 @@
       "32": "icons/zorgz-2625/icon32.png",
       "48": "icons/zorgz-2625/icon48.png",
       "128": "icons/zorgz-2625/icon128.png"
-    }
+    },
+    "default_popup": "popup.html"
   },
   "permissions": ["storage"],
   "host_permissions": [

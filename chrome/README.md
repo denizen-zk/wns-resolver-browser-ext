@@ -107,13 +107,4 @@ Three extension settings help mitigate this:
 | **Request Headers** | Add an API key or auth token if your provider requires one |
 | **RPC Cooldown (ms)** | Increase the delay between RPC calls to stay under rate limits |
 
-### RPC Providers
-
-| Provider | URL |
-|:---|:---|
-| Infura | https://www.infura.io |
-| QuickNode | https://www.quicknode.com |
-| Alchemy | https://www.alchemy.com |
-| Ankr | https://www.ankr.com |
-| dRPC | https://drpc.org |
-| LlamaRPC (default, free) | https://llamarpc.com |
+See [RPC Providers](../README.md#rpc-providers) in the top-level README for a list of providers.
