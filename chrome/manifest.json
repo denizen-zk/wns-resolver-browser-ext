@@ -5,10 +5,18 @@
   "description": "Detect, resolve, and replace Ethereum addresses with their WEI Name Service (WNS) primary names.",
   "author": "Denizen. // dnzn.wei",
   "icons": {
-    "16": "icons/icon16.png",
-    "32": "icons/icon32.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/zorgz-2625/icon16.png",
+    "32": "icons/zorgz-2625/icon32.png",
+    "48": "icons/zorgz-2625/icon48.png",
+    "128": "icons/zorgz-2625/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/zorgz-2625/icon16.png",
+      "32": "icons/zorgz-2625/icon32.png",
+      "48": "icons/zorgz-2625/icon48.png",
+      "128": "icons/zorgz-2625/icon128.png"
+    }
   },
   "permissions": ["storage"],
   "host_permissions": [
