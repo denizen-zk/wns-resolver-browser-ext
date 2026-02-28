@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Wei Name Service (WNS) Resolver",
-  "version": "26.2.18.1003",
+  "version": "26.2.28.1004",
   "description": "Detect, resolve, and replace Ethereum addresses with their WEI Name Service (WNS) primary names.",
   "author": "Denizen. // dnzn.wei",
   "icons": {
