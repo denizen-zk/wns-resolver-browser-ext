@@ -26,6 +26,20 @@ by **Denizen.** // dnzn.wei
 | Wei Name Service (WNS) | [0x0000000000696760E15f265e828DB644A0c242EB](https://etherscan.io/address/0x0000000000696760e15f265e828db644a0c242eb) |
 | Multicall3 | [0xcA11bde05977b3631167028862bE2a173976CA11](https://etherscan.io/address/0xcA11bde05977b3631167028862bE2a173976CA11) |
 
+## Troubleshooting
+
+### RPC Rate Limiting
+
+Free/public RPC endpoints (including the default `eth.llamarpc.com`) enforce rate limits. Heavy browsing or pages with many addresses can trigger errors (e.g. Cloudflare Error 1015), temporarily blocking requests and causing failed resolutions.
+
+To mitigate this, open the extension options and configure:
+
+- **RPC URL** — switch to a dedicated provider endpoint
+- **Request Headers** — add an API key / auth token if your provider requires one
+- **RPC Cooldown** — increase the delay between RPC calls
+
+See [RPC Providers](chrome/README.md#rpc-providers) in the Chrome extension docs for a list of providers.
+
 ## License
 
 MIT

@@ -92,3 +92,28 @@ These settings are hidden behind the **Advanced** toggle on the options page.
   }
 ]
 ```
+
+## Troubleshooting
+
+### RPC Rate Limiting
+
+Free/public RPC endpoints (including the default `eth.llamarpc.com`) enforce rate limits. Heavy browsing or pages with many Ethereum addresses can trigger errors (e.g. Cloudflare Error 1015), temporarily blocking requests and causing failed name resolutions.
+
+Three extension settings help mitigate this:
+
+| Setting | What to do |
+|:---|:---|
+| **RPC URL** | Switch to a dedicated provider endpoint (see table below) |
+| **Request Headers** | Add an API key or auth token if your provider requires one |
+| **RPC Cooldown (ms)** | Increase the delay between RPC calls to stay under rate limits |
+
+### RPC Providers
+
+| Provider | URL |
+|:---|:---|
+| Infura | https://www.infura.io |
+| QuickNode | https://www.quicknode.com |
+| Alchemy | https://www.alchemy.com |
+| Ankr | https://www.ankr.com |
+| dRPC | https://drpc.org |
+| LlamaRPC (default, free) | https://llamarpc.com |
