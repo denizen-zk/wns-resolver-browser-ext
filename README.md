@@ -11,7 +11,7 @@ by **Denizen.** // dnzn.wei
 - **Local Caching** — caches resolved names with a configurable TTL to eliminate redundant RPC calls
 - **SPA Support** — watches for DOM mutations so dynamically loaded content continues to resolve
 - **Configurable** — custom RPC endpoint and headers, cache TTL, regex overrides, ignore list, optional ENS replacement
-- **Zero Dependencies** — plain JS, no build requirements
+- **Zero Dependencies** — vanilla javascript, no build requirements and zero external dependencies.
 
 ## Implementations
 

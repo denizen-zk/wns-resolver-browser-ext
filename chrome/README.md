@@ -11,7 +11,7 @@ Chrome Manifest V3 implementation of the Wei Name Service (WNS) Resolver Extensi
 3. Enable **Developer mode**
 4. Click **Load unpacked** and select the `chrome/` directory
 
-*No build requirements — vanilla JS, zero dependencies.*
+*Vanilla javascript, no build requirements and zero external dependencies.*
 
 ### Production
 
